@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>متجر الورود 🌹</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="site-title">متجر الورود 🌹</h1>
+        <nav>
+            <a href="#" id="nav-home">الرئيسية</a>
+            <a href="#" onclick="showCart()" id="nav-cart">السلة 🛒 (<span id="cart-count">0</span>)</a>
+            <a href="#" id="nav-contact">اتصل بنا</a>
+        </nav>
+        <div class="language-switch">
+            <button onclick="setLanguage('ar')">عربي</button>
+            <button onclick="setLanguage('en')">English</button>
+        </div>
+    </header>
+
+    <main>
+        <h2 id="products-title">منتجاتنا</h2>
+        <div class="products">
+            <div class="product" data-ar-name="باقة الورود الحمراء" data-en-name="Red Roses Bouquet">
+                <img src="https://images.unsplash.com/photo-1591286326163-efc4496cf0f7?auto=format&fit=crop&w=150&q=80" alt="ورد أحمر">
+                <h3 class="product-name">باقة الورود الحمراء</h3>
+                <p class="product-price">سعر: 10 ريال</p>
+                <button class="add-cart-btn" data-price="10">أضف للسلة</button>
+            </div>
+            <div class="product" data-ar-name="باقة الورود البيضاء" data-en-name="White Roses Bouquet">
+                <img src="https://images.unsplash.com/photo-1595433562696-65d6c8a60e84?auto=format&fit=crop&w=150&q=80" alt="ورد أبيض">
+                <h3 class="product-name">باقة الورود البيضاء</h3>
+                <p class="product-price">سعر: 12 ريال</p>
+                <button class="add-cart-btn" data-price="12">أضف للسلة</button>
+            </div>
+            <div class="product" data-ar-name="باقة الورود المختلطة" data-en-name="Mixed Roses Bouquet">
+                <img src="https://images.unsplash.com/photo-1584270354949-458a4e35d798?auto=format&fit=crop&w=150&q=80" alt="ورد مختلط">
+                <h3 class="product-name">باقة الورود المختلطة</h3>
+                <p class="product-price">سعر: 15 ريال</p>
+                <button class="add-cart-btn" data-price="15">أضف للسلة</button>
+            </div>
+        </div>
+
+        <div id="cart" class="cart-container">
+            <h2 id="cart-title">سلتك</h2>
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th id="th-product">المنتج</th>
+                        <th id="th-quantity">الكمية</th>
+                        <th id="th-price">السعر</th>
+                        <th id="th-remove">إزالة</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p id="total-price">الإجمالي: 0 ريال</p>
+            <button id="checkout-btn">شراء الآن</button>
+            <button onclick="closeCart()" id="close-cart-btn">اغلق السلة</button>
+        </div>
+    </main>
+
+    <footer>
+        <p id="footer-text">جميع الحقوق محفوظة &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
