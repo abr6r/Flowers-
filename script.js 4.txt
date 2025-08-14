@@ -1,0 +1,54 @@
+const langBtn = document.getElementById('lang-btn');
+const siteTitle = document.getElementById('site-title');
+const productNames = document.querySelectorAll('.product-name');
+const addButtons = document.querySelectorAll('.add-to-cart');
+const cartItems = document.getElementById('cart-items');
+const totalPriceElem = document.getElementById('total-price');
+
+let cart = [];
+let prices = [];
+let currentLang = 'ar';
+
+langBtn.addEventListener('click', () => {
+    if (currentLang === 'ar') {
+        currentLang = 'en';
+        siteTitle.textContent = "Flower Shop";
+        productNames[0].textContent = "Red Rose";
+        productNames[1].textContent = "Yellow Rose";
+        addButtons[0].textContent = "Add to cart";
+        addButtons[1].textContent = "Add to cart";
+        totalPriceElem.textContent = `Total: ${calculateTotal()} SAR`;
+        langBtn.textContent = "عربي";
+    } else {
+        currentLang = 'ar';
+        siteTitle.textContent = "متجر الورود";
+        productNames[0].textContent = "وردة حمراء";
+        productNames[1].textContent = "وردة صفراء";
+        addButtons[0].textContent = "أضف للسلة";
+        addButtons[1].textContent = "أضف للسلة";
+        totalPriceElem.textContent = `الإجمالي: ${calculateTotal()} ريال`;
+        langBtn.textContent = "English";
+    }
+});
+
+addButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        cart.push(productNames[index].textContent);
+        prices.push(parseInt(document.querySelectorAll('.product-price')[index].textContent));
+        updateCart();
+    });
+});
+
+function updateCart() {
+    cartItems.innerHTML = "";
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        cartItems.appendChild(li);
+    });
+    totalPriceElem.textContent = currentLang === 'ar' ? `الإجمالي: ${calculateTotal()} ريال` : `Total: ${calculateTotal()} SAR`;
+}
+
+function calculateTotal() {
+    return prices.reduce((a,b) => a+b, 0);
+}
